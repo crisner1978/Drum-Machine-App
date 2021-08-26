@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { ButtonWrapper } from "./PadElements";
 
 const Pad = ({ clip, setDisplay }) => {
   const [active, setActive] = useState(false);
@@ -27,15 +28,12 @@ const Pad = ({ clip, setDisplay }) => {
 
   return (
     <div className="btn-group">
-      <div
+      <ButtonWrapper
         onClick={playSound}
-        className={`btn btn-secondary p-3 m-2 drum-pad ${
-          active && "btn-warning border border-5 border-dark rounded"
-        }`}
         id={clip.id}>
         <audio src={clip.url} className="clip" id={clip.keyTrigger} />
         {clip.keyTrigger}
-      </div>
+      </ButtonWrapper>
     </div>
   );
 };

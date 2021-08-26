@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import Pad from "./components/Pad";
+import styled from "styled-components";
 
 const audioClips = [
   {
@@ -59,20 +60,55 @@ const audioClips = [
   },
 ];
 
+const Container = styled.div`
+  position: relative;
+  padding: 2rem 0;
+  padding-bottom: 5rem;
+  height: 100vh;
+  background: -webkit-linear-gradient(to left, #c21500, #ffc500);
+  background: linear-gradient(to top, black, #c21500, #ffc500);
+`;
+
+const TitleWrapper = styled.div`
+  text-shadow: 2px 14px 9px rgba(0, 0, 0, 0.6);
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  height: 120px;
+  text-align: center;
+
+
+ h3 {
+   line-height: 2.4rem;
+ }
+`;
+const DrumContent = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-width: 350px;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 55%;
+`;
+
 function App() {
   const [display, setDisplay] = useState(false);
   return (
-    <div className="row justify-content-center bg-primary vh-100 text-white">
-    <div
-      id="drum-machine"
-      className="text-center col-6">
-      <h1 className='py-5'>Drum Machine</h1>
-      {audioClips.map((clip) => (
-        <Pad key={clip.id} clip={clip} setDisplay={setDisplay} />
-      ))}
-      <h3 id="display">{display}</h3>
-    </div>
-    </div>
+    <Container>
+      <TitleWrapper>
+        <h1 className="display-4">DRUM MACHINE</h1>
+        <h3 id="display">{display}</h3>
+      </TitleWrapper>
+      <DrumContent id="drum-machine">
+        {audioClips.map((clip) => (
+          <Pad key={clip.id} clip={clip} setDisplay={setDisplay} />
+        ))}
+      </DrumContent>
+    </Container>
   );
 }
 
