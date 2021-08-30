@@ -27,14 +27,12 @@ const Pad = ({ clip, setDisplay }) => {
   };
 
   return (
-    <div className="btn-group">
-      <ButtonWrapper
-        onClick={playSound}
-        id={clip.id}>
+    // <div className="btn-group">
+      <ButtonWrapper onClick={playSound} id={clip.id}>
         <audio src={clip.url} className="clip" id={clip.keyTrigger} />
         {clip.keyTrigger}
       </ButtonWrapper>
-    </div>
+    // </div>
   );
 };
 export default Pad;
